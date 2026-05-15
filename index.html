@@ -820,37 +820,44 @@
     <div class="tiers">
       <div class="tier">
         <h3>The Mini</h3>
-        <div class="price">$50</div>
-        <p class="price-note">15 minutes</p>
+        <div class="price">$125</div>
+        <p class="price-note">30 minutes</p>
         <ul>
-          <li>10 edited digital images</li>
-          <li>Pre-session styling tips</li>
+          <li>30-minute session</li>
+          <li>One location</li>
+          <li>15 edited digital images</li>
           <li>Online gallery</li>
-          <li>Subject to availablity</li>
+          <li>Personal print release</li>
         </ul>
         <a href="#contact" class="btn">Inquire</a>
       </div>
 
       <div class="tier featured">
         <h3>The Signature</h3>
-        <div class="price">$100</div>
-        <p class="price-note">30 minutes</p>
+        <div class="price">$250</div>
+        <p class="price-note">75 minutes</p>
         <ul>
-          <li>20 edited digital images</li>
+          <li>75-minute session</li>
+          <li>Up to two locations</li>
+          <li>40 edited digital images</li>
           <li>Pre-session styling tips</li>
           <li>Online gallery</li>
+          <li>Personal print release</li>
         </ul>
         <a href="#contact" class="btn btn-primary">Inquire</a>
       </div>
 
       <div class="tier">
         <h3>The Extended</h3>
-        <div class="price">$250</div>
-        <p class="price-note">75 minutes</p>
+        <div class="price">$425</div>
+        <p class="price-note">2 hours</p>
         <ul>
-          <li>40 edited digital images</li>
-          <li>Pre-session styling tips</li>
+          <li>2-hour session</li>
+          <li>Up to two locations</li>
+          <li>70+ edited digital images</li>
+          <li>Wardrobe consultation</li>
           <li>Online gallery</li>
+          <li>Print release included</li>
         </ul>
         <a href="#contact" class="btn">Inquire</a>
       </div>
@@ -888,7 +895,7 @@
       <span class="badge">Add-On</span>
       <h3>Photo Booth Station</h3>
       <div class="price">$100<span class="per">/hr</span></div>
-      <p class="price-note">2-hour minimum · 4-hour max</p>
+      <p class="price-note">Add to any event coverage</p>
       <ul>
         <li>Dedicated photo booth setup at your venue</li>
         <li>DSLR on tripod with studio lighting and mirror</li>
@@ -953,7 +960,7 @@
   <div class="socials">
     <a href="#" aria-label="Instagram">Instagram</a>
     <a href="#" aria-label="Pinterest">Pinterest</a>
-    <a href="mailto:hello@studiokuo.com" aria-label="Email">Email</a>
+    <a href="mailto:linakuo.photography@gmail.com" aria-label="Email">Email</a>
   </div>
   <p>© 2026 Studio Kuo · Bay Area, California · All rights reserved.</p>
 </footer>
@@ -989,11 +996,26 @@
     document.getElementById('lightbox').classList.remove('open');
   }
 
-  // Form submit
+  // Form submit — composes a mailto: with form data and opens email client
   function handleSubmit(e) {
     e.preventDefault();
-    alert("Thank you! I'll be in touch within 48 hours.");
-    e.target.reset();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const type = document.getElementById('type').value;
+    const date = document.getElementById('date').value || 'not specified';
+    const message = document.getElementById('message').value;
+
+    const subject = `Session inquiry — ${type} (${name})`;
+    const body = `Hi Lina,
+
+I'd like to inquire about a ${type.toLowerCase()} session.
+
+From: ${name} (${email})
+Ideal date: ${date}
+
+${message}`;
+
+    window.location.href = `mailto:linakuo.photography@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   // Close mobile menu on link click
