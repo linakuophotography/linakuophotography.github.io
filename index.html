@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studio Kuo — Bay Area Photography</title>
+<meta name="description" content="Bay Area portrait, family, maternity, and event photography. Quiet, editorial, and timeless." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e8e6e2;
+    --accent: #1a1a1a;
+    --cream: #f6f3ee;
+    --serif: "Cormorant Garamond", "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 22px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+  .logo span { font-style: italic; }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .nav-links a {
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--ink);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 40px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 80px;
+  }
+  .hero-text .eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .hero-text h1 {
+    font-family: var(--serif);
+    font-size: clamp(48px, 6vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    letter-spacing: -1px;
+  }
+  .hero-text h1 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+  .hero-text p {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 440px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+  .btn {
+    display: inline-block;
+    padding: 16px 32px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    font-weight: 400;
+  }
+  .btn:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--ink);
+  }
+  .hero-image {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--cream);
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section {
+    padding: 100px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .section-header .eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .section-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300;
+    letter-spacing: -0.5px;
+  }
+  .section-header h2 em { font-style: italic; }
+
+  /* ---------- PORTFOLIO ---------- */
+  .filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    background: none;
+    border: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 4px;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+    font-weight: 400;
+  }
+  .filter-btn:hover { color: var(--ink); }
+  .filter-btn.active {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .gallery-item {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--cream);
+    position: relative;
+    cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-item .tag {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: rgba(255,255,255,0.95);
+    color: var(--ink);
+    padding: 6px 12px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.3s;
+  }
+  .gallery-item:hover .tag { opacity: 1; transform: translateY(0); }
+  @media (max-width: 900px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  }
+  @media (max-width: 500px) {
+    .gallery { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing {
+    background: var(--cream);
+    max-width: none;
+    margin: 0;
+    padding: 100px 40px;
+  }
+  .pricing-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .tier {
+    background: var(--bg);
+    padding: 48px 36px;
+    text-align: center;
+    border: 1px solid var(--line);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .tier:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+  }
+  .tier.featured {
+    border-color: var(--ink);
+    position: relative;
+  }
+  .tier.featured::before {
+    content: "Most Popular";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--bg);
+    padding: 4px 14px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .tier h3 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .tier .price {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 300;
+    margin: 20px 0 8px;
+    letter-spacing: -1px;
+  }
+  .tier .price-note {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .tier ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+  .tier li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    color: #444;
+  }
+  .tier li:last-child { border-bottom: none; }
+  .tier li::before {
+    content: "—";
+    margin-right: 10px;
+    color: var(--muted);
+  }
+
+  /* ---------- EVENTS PRICING ---------- */
+  .events-pricing {
+    padding: 100px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .events-intro {
+    max-width: 720px;
+    margin: 0 auto 56px;
+    text-align: center;
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .events-tiers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .tier .per {
+    font-size: 18px;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-weight: 300;
+    letter-spacing: 0;
+    margin-left: 2px;
+  }
+  .tier .badge {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 4px 12px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 900px) {
+    .events-tiers { grid-template-columns: 1fr; }
+    .events-pricing { padding: 60px 24px; }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-top { padding-top: 140px; }
+  .about-grid {
+    display: block;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .about-image {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--cream);
+    margin-bottom: 64px;
+  }
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .about-text {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .about-text .eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .about-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300;
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .about-text h2 em { font-style: italic; }
+  .about-text p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 40px auto;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    max-width: 600px;
+  }
+  .stat { text-align: center; }
+  .stat .num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 400;
+    display: block;
+    line-height: 1;
+  }
+  .stat .lbl {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ---------- TESTIMONIAL ---------- */
+  .testimonial {
+    text-align: center;
+    padding: 100px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .testimonial blockquote {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 300;
+    line-height: 1.4;
+    font-style: italic;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .testimonial cite {
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    background: var(--ink);
+    color: var(--bg);
+    max-width: none;
+    margin: 0;
+    padding: 100px 40px;
+  }
+  .contact-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact .eyebrow {
+    color: rgba(255,255,255,0.6);
+  }
+  .contact h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .contact h2 em { font-style: italic; }
+  .contact > .contact-inner > p {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 48px;
+    font-size: 16px;
+  }
+  .contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: left;
+  }
+  .field { display: flex; flex-direction: column; }
+  .field.full { grid-column: span 2; }
+  .field label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding: 12px 0;
+    color: var(--bg);
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-bottom-color: var(--bg);
+  }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .field select option { color: var(--ink); }
+  .contact-form .btn-submit {
+    grid-column: span 2;
+    background: transparent;
+    color: var(--bg);
+    border: 1px solid var(--bg);
+    padding: 18px 32px;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-top: 16px;
+    justify-self: center;
+    min-width: 220px;
+  }
+  .contact-form .btn-submit:hover {
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 40px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  footer .socials {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+  footer .socials a {
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    transition: color 0.2s;
+  }
+  footer .socials a:hover { color: var(--bg); }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 40px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    font-weight: 300;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .nav-inner { padding: 18px 24px; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg);
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .nav-links li:last-child { border-bottom: none; }
+    .menu-toggle { display: block; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 100px 24px 40px;
+      gap: 40px;
+      min-height: auto;
+    }
+    .hero-image { order: -1; aspect-ratio: 4 / 5; }
+
+    section { padding: 60px 24px; }
+    .pricing, .contact { padding: 60px 24px; }
+
+    .tiers { grid-template-columns: 1fr; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-stats { grid-template-columns: 1fr; gap: 16px; }
+    .stat { text-align: center; }
+
+    .contact-form { grid-template-columns: 1fr; }
+    .field.full { grid-column: span 1; }
+    .contact-form .btn-submit { grid-column: span 1; }
+  }
+
+  @media (max-width: 500px) {
+    .filter-bar { gap: 18px; }
+  }
+
+  /* Scroll-in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="logo">Studio <span>Kuo</span></a>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#pricing">Sessions</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ABOUT (top of page) -->
+<section id="about" class="about-top">
+  <div class="about-grid">
+    <div class="about-text">
+      <p class="eyebrow">About</p>
+      <h2>Hello, I'm <em>Lina</em>.</h2>
+      <p>I'm a Bay Area photographer with a quiet, documentary approach to portraits. I believe the best photographs aren't posed — they're felt. My work lives somewhere between film stillness and morning light.</p>
+      <p>Originally from Philadelphia, I've called the Bay home since 2016. When I'm not behind a camera, you'll find me enjoying time with friends and family in community, traveling to new places, or working my day job in tech.</p>
+    <div class="about-image">
+      <img src="photos/about-me.jpg" alt="The photographer and her family" />
+    </div>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="num">6+</span>
+          <span class="lbl">Years experience</span>
+        </div>
+        <div class="stat">
+          <span class="num">25+</span>
+          <span class="lbl">Sessions</span>
+        </div>
+        <div class="stat">
+          <span class="num">48hr</span>
+          <span class="lbl">Response time</span>
+        </div>
+      </div>
+
+      <a href="#contact" class="btn btn-primary">Book a Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-header">
+    <p class="eyebrow">Selected Work</p>
+    <h2>The <em>Portfolio</em></h2>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="portraits">Portraits</button>
+    <button class="filter-btn" data-filter="family">Family</button>
+    <button class="filter-btn" data-filter="maternity">Maternity</button>
+  </div>
+
+  <div class="gallery" id="gallery">
+    <!-- Portraits -->
+    <div class="gallery-item" data-cat="portraits">
+      <img src="photos/portrait-01.jpg" alt="Portrait — woman in floral dress at garden" loading="lazy" />
+      <span class="tag">Portrait</span>
+    </div>
+    <div class="gallery-item" data-cat="portraits">
+      <img src="photos/portrait-02.jpg" alt="Portrait — woman with peonies bouquet" loading="lazy" />
+      <span class="tag">Portrait</span>
+    </div>
+    <div class="gallery-item" data-cat="portraits">
+      <img src="photos/portrait-03.jpg" alt="Portrait — graduation celebration with confetti" loading="lazy" />
+      <span class="tag">Portrait</span>
+    </div>
+
+    <!-- Family -->
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-01.jpg" alt="Mother and son in the redwoods" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-02.jpg" alt="Father holding newborn baby" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-03.jpg" alt="Grandfather meeting newborn grandchild" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-04.jpg" alt="Family of four in redwood forest" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-05.jpg" alt="Family of six at golden hour" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-06.jpg" alt="Family walking together at sunset" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-07.jpg" alt="Young family with toddler outdoors" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-08.jpg" alt="Family portrait" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-09.jpg" alt="Family portrait" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+    <div class="gallery-item" data-cat="family">
+      <img src="photos/family-10.jpg" alt="Family portrait" loading="lazy" />
+      <span class="tag">Family</span>
+    </div>
+
+    <!-- Maternity -->
+    <div class="gallery-item" data-cat="maternity">
+      <img src="photos/maternity-01.jpg" alt="Maternity session at cactus garden" loading="lazy" />
+      <span class="tag">Maternity</span>
+    </div>
+    <div class="gallery-item" data-cat="maternity">
+      <img src="photos/maternity-02.jpg" alt="Pregnancy announcement with ultrasound photo" loading="lazy" />
+      <span class="tag">Maternity</span>
+    </div>
+    <div class="gallery-item" data-cat="maternity">
+      <img src="photos/maternity-03.jpg" alt="Couple under rose archway" loading="lazy" />
+      <span class="tag">Maternity</span>
+    </div>
+    <div class="gallery-item" data-cat="maternity">
+      <img src="photos/maternity-04.jpg" alt="Expecting parents holding baby shoes" loading="lazy" />
+      <span class="tag">Maternity</span>
+    </div>
+    <div class="gallery-item" data-cat="maternity">
+      <img src="photos/maternity-05.jpg" alt="Maternity portrait" loading="lazy" />
+      <span class="tag">Maternity</span>
+    </div>
+    <div class="gallery-item" data-cat="maternity">
+      <img src="photos/maternity-06.jpg" alt="Maternity portrait" loading="lazy" />
+      <span class="tag">Maternity</span>
+    </div>
+    <div class="gallery-item" data-cat="maternity">
+      <img src="photos/maternity-07.jpg" alt="Maternity portrait" loading="lazy" />
+      <span class="tag">Maternity</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="section-header">
+      <p class="eyebrow">Investment</p>
+      <h2>Session <em>Pricing</em></h2>
+    </div>
+
+    <div class="tiers">
+      <div class="tier">
+        <h3>The Mini</h3>
+        <div class="price">$125</div>
+        <p class="price-note">30 minutes</p>
+        <ul>
+          <li>30-minute session</li>
+          <li>One location</li>
+          <li>15 edited digital images</li>
+          <li>Online gallery</li>
+          <li>Personal print release</li>
+        </ul>
+        <a href="#contact" class="btn">Inquire</a>
+      </div>
+
+      <div class="tier featured">
+        <h3>The Signature</h3>
+        <div class="price">$250</div>
+        <p class="price-note">75 minutes</p>
+        <ul>
+          <li>75-minute session</li>
+          <li>Up to two locations</li>
+          <li>40 edited digital images</li>
+          <li>Pre-session styling tips</li>
+          <li>Online gallery</li>
+          <li>Personal print release</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Inquire</a>
+      </div>
+
+      <div class="tier">
+        <h3>The Extended</h3>
+        <div class="price">$425</div>
+        <p class="price-note">2 hours</p>
+        <ul>
+          <li>2-hour session</li>
+          <li>Up to two locations</li>
+          <li>70+ edited digital images</li>
+          <li>Wardrobe consultation</li>
+          <li>Online gallery</li>
+          <li>Print release included</li>
+        </ul>
+        <a href="#contact" class="btn">Inquire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS PRICING -->
+<section class="events-pricing" id="events">
+  <div class="section-header">
+    <p class="eyebrow">Event Photography</p>
+    <h2>Events & <em>Photo Booth</em></h2>
+  </div>
+
+  <p class="events-intro">From birthdays and engagement parties to graduations and small celebrations — I cover events up to four hours and can set up a dedicated photo booth station so every guest leaves with a portrait of their own.</p>
+
+  <div class="events-tiers">
+    <div class="tier">
+      <span class="badge">Coverage</span>
+      <h3>Event Coverage</h3>
+      <div class="price">$150<span class="per">/hr</span></div>
+      <p class="price-note">2-hour minimum · 4-hour max</p>
+      <ul>
+        <li>Candid coverage of guests, moments, and details</li>
+        <li>Two-hour minimum booking</li>
+        <li>Up to four hours of continuous coverage</li>
+        <li>~50 edited digital images per hour</li>
+        <li>Online gallery delivered within 2 weeks</li>
+        <li>Travel within 25 mi of Sunnyvale included</li>
+      </ul>
+      <a href="#contact" class="btn">Inquire</a>
+    </div>
+
+    <div class="tier">
+      <span class="badge">Add-On</span>
+      <h3>Photo Booth Station</h3>
+      <div class="price">$100<span class="per">/hr</span></div>
+      <p class="price-note">Add to any event coverage</p>
+      <ul>
+        <li>Dedicated photo booth setup at your venue</li>
+        <li>DSLR on tripod with studio lighting and mirror</li>
+        <li>Self-serve operation with remote shutter trigger</li>
+        <li>Clean white backdrop</li>
+        <li>Photographer on site for posing tips and assistance</li>
+        <li>Unlimited prints on 4x6 at event and full digital gallery</li>
+      </ul>
+      <a href="#contact" class="btn">Inquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <blockquote>"Love these wow!!! I have so many favorites!"</blockquote>
+  <cite>— The Crits-Dighe Family, San Francisco</cite>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Let's <em>create</em> together.</h2>
+    <p>Sessions book 4–6 weeks in advance. Tell me a little about what you're imagining and I'll be in touch within 48 hours.</p>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="field">
+        <label for="type">Session Type</label>
+        <select id="type" name="type" required>
+          <option value="">Select one</option>
+          <option>Portraits</option>
+          <option>Family</option>
+          <option>Maternity</option>
+          <option>Event</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="date">Ideal Date</label>
+        <input type="text" id="date" name="date" placeholder="Month / Year" />
+      </div>
+      <div class="field full">
+        <label for="message">Tell me about your session</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send Inquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="socials">
+    <a href="#" aria-label="Instagram">Instagram</a>
+    <a href="#" aria-label="Pinterest">Pinterest</a>
+    <a href="mailto:hello@studiokuo.com" aria-label="Email">Email</a>
+  </div>
+  <p>© 2026 Studio Kuo · Bay Area, California · All rights reserved.</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" aria-label="Close">×</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  // Filter portfolio
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  // Lightbox
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').classList.add('open');
+    });
+  });
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert("Thank you! I'll be in touch within 48 hours.");
+    e.target.reset();
+  }
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('section, .gallery-item').forEach(el => {
+    el.classList.add('fade-in');
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
