@@ -667,13 +667,8 @@
     .stat .lbl { font-size: 8px; }
   }
 
-  /* Scroll-in animation */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  /* Scroll-in animation removed — was causing sections to stay invisible
+     when the section was taller than the viewport on mobile */
 </style>
 </head>
 <body>
@@ -1033,16 +1028,7 @@ ${message}`;
     });
   });
 
-  // Scroll fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('section').forEach(el => {
-    el.classList.add('fade-in');
-    observer.observe(el);
-  });
+  // (Scroll fade-in animation removed — was causing layout collapse on mobile)
 </script>
 
 </body>
