@@ -444,7 +444,41 @@
     display: block;
   }
 
-  /* ---------- TESTIMONIAL ---------- */
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials {
+    padding: 100px 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .testimonials .section-header { margin-bottom: 56px; }
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 56px 48px;
+    align-items: start;
+  }
+  .testimonial-item {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .testimonial-item blockquote {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.1vw, 26px);
+    font-weight: 300;
+    line-height: 1.45;
+    font-style: italic;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .testimonial-item cite {
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  /* Single-testimonial layout fallback (legacy) */
   .testimonial {
     text-align: center;
     padding: 100px 40px;
@@ -650,6 +684,10 @@
 
     .testimonial { padding: 60px 24px; }
     .testimonial blockquote { font-size: clamp(20px, 5vw, 26px); }
+    .testimonials { padding: 56px 20px; }
+    .testimonials .section-header { margin-bottom: 36px; }
+    .testimonial-grid { grid-template-columns: 1fr; gap: 44px; }
+    .testimonial-item blockquote { font-size: 19px; }
 
     .contact-form { grid-template-columns: 1fr; gap: 16px; }
     .field.full { grid-column: span 1; }
@@ -731,6 +769,7 @@
     <button class="filter-btn" data-filter="portraits">Portraits</button>
     <button class="filter-btn" data-filter="family">Family</button>
     <button class="filter-btn" data-filter="maternity">Maternity</button>
+    <button class="filter-btn" data-filter="events">Events</button>
   </div>
 
   <div class="gallery" id="gallery">
@@ -819,6 +858,24 @@
       <img src="photos/maternity-07.jpg" alt="Maternity portrait" />
       <span class="tag">Maternity</span>
     </div>
+
+    <!-- Events -->
+    <div class="gallery-item" data-cat="events">
+      <img src="photos/event-01.jpg" alt="Family at restaurant celebration" />
+      <span class="tag">Events</span>
+    </div>
+    <div class="gallery-item" data-cat="events">
+      <img src="photos/event-02.jpg" alt="Laughing child at dim sum lunch" />
+      <span class="tag">Events</span>
+    </div>
+    <div class="gallery-item" data-cat="events">
+      <img src="photos/event-03.jpg" alt="Lunar New Year celebration with red and gold decor" />
+      <span class="tag">Events</span>
+    </div>
+    <div class="gallery-item" data-cat="events">
+      <img src="photos/event-04.jpg" alt="Father and child at community food festival" />
+      <span class="tag">Events</span>
+    </div>
   </div>
 </section>
 
@@ -901,7 +958,7 @@
       <p class="price-note">Add to any event coverage</p>
       <ul>
         <li>Dedicated photo booth setup at your venue</li>
-        <li>DSLR on tripod with studio lighting and mirror</li>
+        <li>DSLR on tripod with studio lighting</li>
         <li>Self-serve operation with remote shutter trigger</li>
         <li>Clean white backdrop</li>
         <li>Photographer on site for posing tips and assistance</li>
@@ -912,10 +969,24 @@
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="testimonial">
-  <blockquote>"Love these wow!!! I have so many favorites!"</blockquote>
-  <cite>— The Crits-Dighe Family, San Francisco</cite>
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-header">
+    <p class="eyebrow">Kind Words</p>
+    <h2>What <em>clients</em> are saying.</h2>
+  </div>
+
+  <div class="testimonial-grid">
+    <div class="testimonial-item">
+      <blockquote>"Lina's warm and personable energy made working with her a breeze, and she completely saved our photos by correcting the heavy yellow tints from the restaurant's tricky lighting. She blew past her two-week turnaround estimate, delivering the final, flawless gallery in less than a week. I'd love to work with her again anytime!"</blockquote>
+      <cite>— The Schaeuble Family</cite>
+    </div>
+
+    <div class="testimonial-item">
+      <blockquote>"Love these wow!!! I have so many favorites!"</blockquote>
+      <cite>— The Crits-Dighe Family</cite>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
